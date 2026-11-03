@@ -26,7 +26,7 @@ export const STRINGS = {
     footerRights: 'All rights reserved.',
   },
   bn: {
-    brand: 'এম্বার অ্যান্ড লিফ',
+    brand: 'আপনা চা ও কফি',
     language: 'English',
     navMenu: 'মেনু',
     cart: 'কার্ট',
