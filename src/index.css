@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-bengali: "Noto Sans Bengali", "Hind Siliguri", system-ui, sans-serif;
+
+  --color-espresso-50: #fbf7f3;
+  --color-espresso-100: #f3e9df;
+  --color-espresso-200: #e6d3c0;
+  --color-espresso-300: #d4b498;
+  --color-espresso-500: #9a6b47;
+  --color-espresso-700: #5e3d26;
+  --color-espresso-800: #3f2817;
+  --color-espresso-900: #26180d;
+
+  --color-sage-50: #f4f7f2;
+  --color-sage-100: #e3ebdd;
+  --color-sage-500: #6f8f5f;
+  --color-sage-700: #46603a;
+
+  --color-amber-50: #fdf6e9;
+  --color-amber-500: #d98e23;
+  --color-amber-600: #b8741a;
+
+  --color-success-600: #2f7d4f;
+  --color-warning-600: #b26a00;
+  --color-error-600: #b42318;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-espresso-50);
+  color: var(--color-espresso-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="bn"] body,
+html[lang="bn"] .font-display {
+  font-family: var(--font-bengali);
+}
