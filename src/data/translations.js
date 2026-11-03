@@ -1,12 +1,12 @@
 export const STRINGS = {
   en: {
-    brand: 'Apna Chai & Coffee',
+    brand: 'Apna Chai & Coffee by Mamun',
     language: 'বাংলা',
     navMenu: 'Menu',
     cart: 'Cart',
     openCart: 'Open cart',
     closeCart: 'Close cart',
-    heroTitle: 'Slow-brewed coffee and soulful tea',
+    heroTitle: '☕🍔 — slow-brewed coffee, soulful tea and delicious bites to make every moment special.',
     heroSubtitle:
       'Hand-crafted drinks made with care, from a warm morning espresso to a cool afternoon iced brew.',
     heroCta: 'Explore the menu',

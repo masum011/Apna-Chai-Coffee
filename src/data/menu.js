@@ -1,3 +1,31 @@
+// Load every image in src/assets automatically, then pick by keyword in the
+// file name (case-insensitive). No exact file name or extension needed.
+const ASSET_FILES = import.meta.glob('../assets/*.{jpg,jpeg,png,webp,svg}', {
+  eager: true,
+  import: 'default',
+})
+
+const findImage = (...keywords) => {
+  const match = Object.entries(ASSET_FILES).find(([path]) =>
+    keywords.some((k) => path.toLowerCase().includes(k))
+  )
+  if (!match) console.warn('[menu] No image found in src/assets for:', keywords)
+  return match ? match[1] : undefined
+}
+
+const regularTea = findImage('regular')
+const sugarFreeTea = findImage('sugar')
+const lemonTea = findImage('lemon')
+const kulhadTea = findImage('kulhad', 'khulad', 'khulor', 'kulhar') || regularTea
+const gurTea = findImage('gur', 'jaggery') || regularTea
+const tulsiTea = findImage('tulsi', 'herbal') || regularTea
+const cigMedium = findImage('medium')
+const cigSmall = findImage('small')
+const cigSpecial = findImage('special')
+const cigClassic = findImage('classic')
+const cigNavyCut = findImage('navycut')
+const cigMarlboro = findImage('marlboro')
+
 export const CATEGORIES = [
   { id: 'all', name: { en: 'All Items', bn: 'সব আইটেম' } },
   { id: 'tea', name: { en: 'Tea', bn: 'চা' } },
@@ -6,24 +34,30 @@ export const CATEGORIES = [
   { id: 'milk', name: { en: 'Milk & Drinks', bn: 'দুধ ও পানীয়' } },
   { id: 'cold-drinks', name: { en: 'Cold Drinks', bn: 'ঠান্ডা পানীয়' } },
   { id: 'shakes', name: { en: 'Milkshakes', bn: 'মিল্কশেক' } },
+  { id: 'smoking', name: { en: 'Smoking', bn: 'ধূমপান' } },
 ];
 
-const TEA_IMAGES = [
-  'https://images.pexels.com/photos/29039075/pexels-photo-29039075.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/34318763/pexels-photo-34318763.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/19880782/pexels-photo-19880782.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-]
+// Named keys (instead of array indexes) so each item always gets the right photo.
+const TEA_IMAGES = {
+  regular: regularTea,
+  sugarFree: sugarFreeTea,
+  lemon: lemonTea,
+  kulhad: kulhadTea,
+  gur: gurTea,
+  tulsi: tulsiTea,
+};
+
 const COFFEE_IMAGES = [
   'https://images.pexels.com/photos/15801079/pexels-photo-15801079.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   'https://images.pexels.com/photos/15801008/pexels-photo-15801008.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   'https://images.pexels.com/photos/36851643/pexels-photo-36851643.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-]
+];
+
 const COLD_IMAGES = [
   'https://images.pexels.com/photos/38028987/pexels-photo-38028987.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   'https://images.pexels.com/photos/38028984/pexels-photo-38028984.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   'https://images.pexels.com/photos/16716138/pexels-photo-16716138.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-]
-
+];
 
 export const MENU_ITEMS = [
   // ==============================
@@ -38,7 +72,7 @@ export const MENU_ITEMS = [
       bn: 'তাজা দুধ দিয়ে তৈরি ঐতিহ্যবাহী ভারতীয় চা।',
     },
     price: 10,
-    image: TEA_IMAGES[0],
+    image: TEA_IMAGES.regular,
   },
   {
     id: 'sugar-free-tea',
@@ -49,7 +83,7 @@ export const MENU_ITEMS = [
       bn: 'অতিরিক্ত চিনি ছাড়া এক কাপ সতেজ চা।',
     },
     price: 15,
-    image: TEA_IMAGES[1],
+    image: TEA_IMAGES.sugarFree,
   },
   {
     id: 'lemon-tea',
@@ -60,7 +94,7 @@ export const MENU_ITEMS = [
       bn: 'তাজা লেবুর স্বাদে তৈরি সতেজ চা।',
     },
     price: 15,
-    image: TEA_IMAGES[2] ,
+    image: TEA_IMAGES.lemon,
   },
   {
     id: 'kulhad-tea',
@@ -71,7 +105,7 @@ export const MENU_ITEMS = [
       bn: 'মাটির ভাঁড়ে পরিবেশিত ঐতিহ্যবাহী ভারতীয় চা।',
     },
     price: 15,
-    image: TEA_IMAGES[0],
+    image: TEA_IMAGES.kulhad,
   },
   {
     id: 'jaggery-tea',
@@ -82,7 +116,7 @@ export const MENU_ITEMS = [
       bn: 'গুড়ের মিষ্টি স্বাদে তৈরি ঐতিহ্যবাহী চা।',
     },
     price: 20,
-    image: TEA_IMAGES[1],
+    image: TEA_IMAGES.gur,
   },
   {
     id: 'tulsi-tea',
@@ -93,7 +127,7 @@ export const MENU_ITEMS = [
       bn: 'তুলসীর সুগন্ধে তৈরি চা।',
     },
     price: 20,
-    image: TEA_IMAGES[2],
+    image: TEA_IMAGES.tulsi,
   },
   {
     id: 'black-tea',
@@ -104,7 +138,7 @@ export const MENU_ITEMS = [
       bn: 'গাঢ় স্বাদ ও সতেজতায় ভরা লিকার চা।',
     },
     price: 20,
-    image: TEA_IMAGES[0],
+    image: TEA_IMAGES.regular,
   },
   {
     id: 'chocolate-tea',
@@ -115,7 +149,7 @@ export const MENU_ITEMS = [
       bn: 'চকোলেটের মজাদার স্বাদে তৈরি বিশেষ চা।',
     },
     price: 20,
-    image: TEA_IMAGES[1],
+    image: TEA_IMAGES.regular,
   },
   {
     id: 'lemongrass-tea',
@@ -126,7 +160,7 @@ export const MENU_ITEMS = [
       bn: 'লেমন গ্রাসের সুগন্ধে তৈরি সতেজ চা।',
     },
     price: 20,
-    image: TEA_IMAGES[2],
+    image: TEA_IMAGES.lemon,
   },
   {
     id: 'elaichi-tea',
@@ -137,7 +171,7 @@ export const MENU_ITEMS = [
       bn: 'এলাচের সুগন্ধে তৈরি ঐতিহ্যবাহী চা।',
     },
     price: 20,
-    image: TEA_IMAGES[0],
+    image: TEA_IMAGES.regular,
   },
   {
     id: 'green-tea',
@@ -148,7 +182,7 @@ export const MENU_ITEMS = [
       bn: 'হালকা ও সতেজ স্বাদের এক কাপ গ্রিন টি।',
     },
     price: 20,
-    image: TEA_IMAGES[1],
+    image: TEA_IMAGES.tulsi,
   },
 
   // ==============================
@@ -163,7 +197,7 @@ export const MENU_ITEMS = [
       bn: 'গুড়, তুলসী ও মসলার স্বাদের বিশেষ চা।',
     },
     price: 20,
-    image: TEA_IMAGES[2],
+    image: TEA_IMAGES.gur,
   },
   {
     id: 'masala-tea',
@@ -174,7 +208,7 @@ export const MENU_ITEMS = [
       bn: 'সুগন্ধি মসলার স্বাদে তৈরি ঐতিহ্যবাহী ভারতীয় চা।',
     },
     price: 20,
-    image: TEA_IMAGES[0] ,
+    image: TEA_IMAGES.kulhad,
   },
   {
     id: 'ginger-tea',
@@ -185,7 +219,7 @@ export const MENU_ITEMS = [
       bn: 'আদার ঝাঁঝালো স্বাদে তৈরি গরম চা।',
     },
     price: 20,
-    image: TEA_IMAGES[1] ,
+    image: TEA_IMAGES.regular,
   },
   {
     id: 'ginger-jaggery-tea',
@@ -196,7 +230,7 @@ export const MENU_ITEMS = [
       bn: 'আদা ও গুড়ের মিশ্র স্বাদে তৈরি বিশেষ চা।',
     },
     price: 25,
-    image: TEA_IMAGES[2],
+    image: TEA_IMAGES.gur,
   },
   {
     id: 'rose-tea',
@@ -207,7 +241,7 @@ export const MENU_ITEMS = [
       bn: 'গোলাপের মনোরম সুগন্ধে তৈরি চা।',
     },
     price: 25,
-    image: TEA_IMAGES[0],
+    image: TEA_IMAGES.kulhad,
   },
   {
     id: 'masala-lemon-tea',
@@ -218,7 +252,7 @@ export const MENU_ITEMS = [
       bn: 'লেবু ও বিশেষ মসলার স্বাদে তৈরি সতেজ চা।',
     },
     price: 20,
-    image: TEA_IMAGES[1] ,
+    image: TEA_IMAGES.lemon,
   },
   {
     id: 'special-lemon-tea',
@@ -229,7 +263,7 @@ export const MENU_ITEMS = [
       bn: 'বিশেষ স্বাদের সতেজ লেবু চা।',
     },
     price: 35,
-    image: TEA_IMAGES[2] ,
+    image: TEA_IMAGES.lemon,
   },
 
   // ==============================
@@ -266,7 +300,18 @@ export const MENU_ITEMS = [
       bn: 'ঠান্ডা ও সতেজ স্বাদের কফি।',
     },
     price: 60,
-    image: COFFEE_IMAGES[2] ,
+    image: COFFEE_IMAGES[2],
+  },
+  {
+    id: 'chocolate-coffee',
+    category: 'coffee',
+    name: { en: 'Chocolate Coffee', bn: 'চকোলেট কফি' },
+    description: {
+      en: 'Chocolate-flavoured coffee drink.',
+      bn: 'চকোলেটের স্বাদে তৈরি কফি।',
+    },
+    price: 50,
+    image: COFFEE_IMAGES[0],
   },
 
   // ==============================
@@ -275,10 +320,7 @@ export const MENU_ITEMS = [
   {
     id: 'kesar-pista-badam-milk',
     category: 'milk',
-    name: {
-      en: 'Kesar Pista Badam Milk',
-      bn: 'কেশর পিস্তা বাদাম দুধ',
-    },
+    name: { en: 'Kesar Pista Badam Milk', bn: 'কেশর পিস্তা বাদাম দুধ' },
     description: {
       en: 'A rich milk drink flavoured with saffron, pistachios and almonds.',
       bn: 'জাফরান, পেস্তা ও বাদামের স্বাদে তৈরি সমৃদ্ধ দুধের পানীয়।',
@@ -286,7 +328,11 @@ export const MENU_ITEMS = [
     price: 30,
     image: COLD_IMAGES[0],
   },
-   {
+
+  // ==============================
+  // COLD DRINKS
+  // ==============================
+  {
     id: 'orange-juice',
     category: 'cold-drinks',
     name: { en: 'Orange Juice', bn: 'কমলা শরবত' },
@@ -319,24 +365,14 @@ export const MENU_ITEMS = [
     price: 40,
     image: COLD_IMAGES[2],
   },
+
+  // ==============================
+  // MILKSHAKES
+  // ==============================
   {
-    id: 'chocolate-coffee',
-    category: 'coffee',
-    name: { en: 'Chocolate Coffee', bn: 'চকোলেট কফি' },
-    description: {
-      en: 'Chocolate-flavoured coffee drink.',
-      bn: 'চকোলেটের স্বাদে তৈরি কফি।',
-    },
-    price: 50,
-    image: COFFEE_IMAGES[0],
-  },
-   {
     id: 'chocolate-milkshake',
     category: 'shakes',
-    name: {
-      en: 'Chocolate Milkshake',
-      bn: 'চকোলেট মিল্কশেক',
-    },
+    name: { en: 'Chocolate Milkshake', bn: 'চকোলেট মিল্কশেক' },
     description: {
       en: 'A chilled chocolate-flavoured milkshake.',
       bn: 'চকোলেটের স্বাদে তৈরি ঠান্ডা মিল্কশেক।',
@@ -347,10 +383,7 @@ export const MENU_ITEMS = [
   {
     id: 'strawberry-milkshake',
     category: 'shakes',
-    name: {
-      en: 'Strawberry Milkshake',
-      bn: 'স্ট্রবেরি মিল্কশেক',
-    },
+    name: { en: 'Strawberry Milkshake', bn: 'স্ট্রবেরি মিল্কশেক' },
     description: {
       en: 'A refreshing strawberry-flavoured milkshake.',
       bn: 'স্ট্রবেরির স্বাদে তৈরি সতেজ মিল্কশেক।',
@@ -361,10 +394,7 @@ export const MENU_ITEMS = [
   {
     id: 'mango-milkshake',
     category: 'shakes',
-    name: {
-      en: 'Mango Milkshake',
-      bn: 'ম্যাঙ্গো মিল্কশেক',
-    },
+    name: { en: 'Mango Milkshake', bn: 'ম্যাঙ্গো মিল্কশেক' },
     description: {
       en: 'A chilled and creamy mango drink.',
       bn: 'আমের স্বাদে তৈরি ঠান্ডা ও ক্রিমি পানীয়।',
@@ -372,5 +402,75 @@ export const MENU_ITEMS = [
     price: 60,
     image: COLD_IMAGES[1],
   },
-];
 
+  // ==============================
+  // SMOKING (price per piece)
+  // Sale to persons under 18 is prohibited.
+  // ==============================
+  {
+    id: 'goldflake-medium',
+    category: 'smoking',
+    name: { en: 'Gold Flake Medium', bn: 'গোল্ড ফ্লেক মিডিয়াম' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 15,
+    image: cigMedium,
+  },
+  {
+    id: 'goldflake-small',
+    category: 'smoking',
+    name: { en: 'Gold Flake Small', bn: 'গোল্ড ফ্লেক স্মল' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 10,
+    image: cigSmall,
+  },
+  {
+    id: 'goldflake-special',
+    category: 'smoking',
+    name: { en: 'Gold Flake Special', bn: 'গোল্ড ফ্লেক স্পেশাল' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 10,
+    image: cigSpecial,
+  },
+  {
+    id: 'classic',
+    category: 'smoking',
+    name: { en: 'Classic', bn: 'ক্লাসিক' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 30,
+    image: cigClassic,
+  },
+  {
+    id: 'navy-cut',
+    category: 'smoking',
+    name: { en: 'Navy Cut', bn: 'নেভি কাট' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 16,
+    image: cigNavyCut,
+  },
+  {
+    id: 'marlboro',
+    category: 'smoking',
+    name: { en: 'Marlboro', bn: 'মার্লবোরো' },
+    description: {
+      en: 'Per piece.',
+      bn: 'প্রতি পিস।',
+    },
+    price: 30,
+    image: cigMarlboro,
+  },
+];
