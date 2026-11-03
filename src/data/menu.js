@@ -1,9 +1,12 @@
 export const CATEGORIES = [
+  { id: 'all', name: { en: 'All Items', bn: 'সব আইটেম' } },
   { id: 'tea', name: { en: 'Tea', bn: 'চা' } },
-  { id: 'coffee', name: { en: 'Coffee', bn: 'কফি' } },
   { id: 'special-tea', name: { en: 'Special Tea', bn: 'বিশেষ চা' } },
+  { id: 'coffee', name: { en: 'Coffee', bn: 'কফি' } },
+  { id: 'milk', name: { en: 'Milk & Drinks', bn: 'দুধ ও পানীয়' } },
   { id: 'cold-drinks', name: { en: 'Cold Drinks', bn: 'ঠান্ডা পানীয়' } },
-]
+  { id: 'shakes', name: { en: 'Milkshakes', bn: 'মিল্কশেক' } },
+];
 
 const TEA_IMAGES = [
   'https://images.pexels.com/photos/29039075/pexels-photo-29039075.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -21,27 +24,31 @@ const COLD_IMAGES = [
   'https://images.pexels.com/photos/16716138/pexels-photo-16716138.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
 ]
 
+
 export const MENU_ITEMS = [
+  // ==============================
+  // CLASSIC TEA
+  // ==============================
   {
-    id: 'masala-chai',
+    id: 'regular-tea',
     category: 'tea',
-    name: { en: 'Masala Chai', bn: 'মসলা চা' },
+    name: { en: 'Regular Tea', bn: 'রেগুলার চা' },
     description: {
-      en: 'Black tea simmered with cardamom, cinnamon and clove, with milk.',
-      bn: 'দুধ, এলাচ, দারুচিনি ও লবঙ্গ দিয়ে তৈরি কড়া লিকার চা।',
+      en: 'Freshly brewed traditional Indian milk tea.',
+      bn: 'তাজা দুধ দিয়ে তৈরি ঐতিহ্যবাহী ভারতীয় চা।',
     },
-    price: 60,
+    price: 10,
     image: TEA_IMAGES[0],
   },
   {
-    id: 'ginger-tea',
+    id: 'sugar-free-tea',
     category: 'tea',
-    name: { en: 'Ginger Tea', bn: 'আদা চা' },
+    name: { en: 'Sugar-Free Tea', bn: 'চিনি ছাড়া চা' },
     description: {
-      en: 'Fresh ginger steeped in strong tea, lightly sweetened.',
-      bn: 'তাজা আদা দিয়ে তৈরি ঝাঁঝালো লিকার চা।',
+      en: 'A refreshing cup of tea without added sugar.',
+      bn: 'অতিরিক্ত চিনি ছাড়া এক কাপ সতেজ চা।',
     },
-    price: 50,
+    price: 15,
     image: TEA_IMAGES[1],
   },
   {
@@ -49,153 +56,321 @@ export const MENU_ITEMS = [
     category: 'tea',
     name: { en: 'Lemon Tea', bn: 'লেবু চা' },
     description: {
-      en: 'Bright black tea with fresh lemon and a touch of honey.',
-      bn: 'তাজা লেবু ও সামান্য মধু মেশানো লিকার চা।',
+      en: 'Refreshing tea infused with fresh lemon flavour.',
+      bn: 'তাজা লেবুর স্বাদে তৈরি সতেজ চা।',
     },
-    price: 50,
-    image: TEA_IMAGES[2],
+    price: 15,
+    image: TEA_IMAGES[2] ,
   },
   {
-    id: 'milk-tea',
+    id: 'kulhad-tea',
     category: 'tea',
-    name: { en: 'Milk Tea', bn: 'দুধ চা' },
+    name: { en: 'Kulhad Tea', bn: 'কুলহড় চা' },
     description: {
-      en: 'Classic creamy milk tea, brewed slow and sweet.',
-      bn: 'ঐতিহ্যবাহী ক্রিমি দুধ চা, ধীরে ফুটিয়ে মিষ্টি করে তৈরি।',
+      en: 'Traditional Indian tea served in a clay cup.',
+      bn: 'মাটির ভাঁড়ে পরিবেশিত ঐতিহ্যবাহী ভারতীয় চা।',
     },
-    price: 40,
+    price: 15,
     image: TEA_IMAGES[0],
   },
   {
-    id: 'espresso',
-    category: 'coffee',
-    name: { en: 'Espresso', bn: 'এসপ্রেসো' },
+    id: 'jaggery-tea',
+    category: 'tea',
+    name: { en: 'Jaggery Tea', bn: 'গুড় চা' },
     description: {
-      en: 'A short, bold shot pulled from our house blend.',
-      bn: 'আমাদের নিজস্ব ব্লেন্ডের গাঢ় ও কড়া এক শট।',
+      en: 'Traditional tea prepared with the rich flavour of jaggery.',
+      bn: 'গুড়ের মিষ্টি স্বাদে তৈরি ঐতিহ্যবাহী চা।',
     },
-    price: 120,
+    price: 20,
+    image: TEA_IMAGES[1],
+  },
+  {
+    id: 'tulsi-tea',
+    category: 'tea',
+    name: { en: 'Tulsi Tea', bn: 'তুলসী চা' },
+    description: {
+      en: 'Aromatic tea infused with traditional tulsi flavour.',
+      bn: 'তুলসীর সুগন্ধে তৈরি চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[2],
+  },
+  {
+    id: 'black-tea',
+    category: 'tea',
+    name: { en: 'Black Tea', bn: 'ব্ল্যাক টি' },
+    description: {
+      en: 'Classic black tea with a rich and refreshing taste.',
+      bn: 'গাঢ় স্বাদ ও সতেজতায় ভরা লিকার চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[0],
+  },
+  {
+    id: 'chocolate-tea',
+    category: 'tea',
+    name: { en: 'Chocolate Tea', bn: 'চকোলেট টি' },
+    description: {
+      en: 'A unique tea with a delightful chocolate flavour.',
+      bn: 'চকোলেটের মজাদার স্বাদে তৈরি বিশেষ চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[1],
+  },
+  {
+    id: 'lemongrass-tea',
+    category: 'tea',
+    name: { en: 'Lemongrass Tea', bn: 'লেমন গ্রাস চা' },
+    description: {
+      en: 'Refreshing aromatic tea with lemongrass flavour.',
+      bn: 'লেমন গ্রাসের সুগন্ধে তৈরি সতেজ চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[2],
+  },
+  {
+    id: 'elaichi-tea',
+    category: 'tea',
+    name: { en: 'Elaichi Tea', bn: 'এলাচি টি' },
+    description: {
+      en: 'Traditional tea with aromatic cardamom flavour.',
+      bn: 'এলাচের সুগন্ধে তৈরি ঐতিহ্যবাহী চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[0],
+  },
+  {
+    id: 'green-tea',
+    category: 'tea',
+    name: { en: 'Green Tea', bn: 'গ্রিন টি' },
+    description: {
+      en: 'A light and refreshing cup of green tea.',
+      bn: 'হালকা ও সতেজ স্বাদের এক কাপ গ্রিন টি।',
+    },
+    price: 20,
+    image: TEA_IMAGES[1],
+  },
+
+  // ==============================
+  // SPECIAL TEA
+  // ==============================
+  {
+    id: 'gur-tulsi-masala-tea',
+    category: 'special-tea',
+    name: { en: 'Gur Tulsi Masala Tea', bn: 'গুড় তুলসী মসলা চা' },
+    description: {
+      en: 'Special tea combining jaggery, tulsi and masala flavours.',
+      bn: 'গুড়, তুলসী ও মসলার স্বাদের বিশেষ চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[2],
+  },
+  {
+    id: 'masala-tea',
+    category: 'special-tea',
+    name: { en: 'Masala Tea', bn: 'মসলা চা' },
+    description: {
+      en: 'Traditional Indian tea with a rich aromatic masala flavour.',
+      bn: 'সুগন্ধি মসলার স্বাদে তৈরি ঐতিহ্যবাহী ভারতীয় চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[0] ,
+  },
+  {
+    id: 'ginger-tea',
+    category: 'special-tea',
+    name: { en: 'Ginger Tea', bn: 'আদা চা' },
+    description: {
+      en: 'Freshly prepared tea with a warm ginger flavour.',
+      bn: 'আদার ঝাঁঝালো স্বাদে তৈরি গরম চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[1] ,
+  },
+  {
+    id: 'ginger-jaggery-tea',
+    category: 'special-tea',
+    name: { en: 'Ginger Jaggery Tea', bn: 'আদা গুড় চা' },
+    description: {
+      en: 'A delicious combination of ginger and jaggery in tea.',
+      bn: 'আদা ও গুড়ের মিশ্র স্বাদে তৈরি বিশেষ চা।',
+    },
+    price: 25,
+    image: TEA_IMAGES[2],
+  },
+  {
+    id: 'rose-tea',
+    category: 'special-tea',
+    name: { en: 'Rose Tea', bn: 'গোলাপ চা' },
+    description: {
+      en: 'Aromatic tea with a delicate rose flavour.',
+      bn: 'গোলাপের মনোরম সুগন্ধে তৈরি চা।',
+    },
+    price: 25,
+    image: TEA_IMAGES[0],
+  },
+  {
+    id: 'masala-lemon-tea',
+    category: 'special-tea',
+    name: { en: 'Masala Lemon Tea', bn: 'মসলা লেমন টি' },
+    description: {
+      en: 'Refreshing lemon tea with a special masala touch.',
+      bn: 'লেবু ও বিশেষ মসলার স্বাদে তৈরি সতেজ চা।',
+    },
+    price: 20,
+    image: TEA_IMAGES[1] ,
+  },
+  {
+    id: 'special-lemon-tea',
+    category: 'special-tea',
+    name: { en: 'Special Lemon Tea', bn: 'স্পেশাল লেমন টি' },
+    description: {
+      en: 'A special refreshing lemon tea with a distinctive taste.',
+      bn: 'বিশেষ স্বাদের সতেজ লেবু চা।',
+    },
+    price: 35,
+    image: TEA_IMAGES[2] ,
+  },
+
+  // ==============================
+  // COFFEE
+  // ==============================
+  {
+    id: 'jaggery-coffee',
+    category: 'coffee',
+    name: { en: 'Jaggery Coffee', bn: 'গুড় কফি' },
+    description: {
+      en: 'Coffee with the distinctive sweetness of jaggery.',
+      bn: 'গুড়ের বিশেষ মিষ্টি স্বাদে তৈরি কফি।',
+    },
+    price: 25,
     image: COFFEE_IMAGES[0],
   },
   {
-    id: 'cappuccino',
+    id: 'hot-coffee',
     category: 'coffee',
-    name: { en: 'Cappuccino', bn: 'ক্যাপুচিনো' },
+    name: { en: 'Hot Coffee', bn: 'হট কফি' },
     description: {
-      en: 'Equal parts espresso, steamed milk and velvety foam.',
-      bn: 'এসপ্রেসো, ভাপানো দুধ ও মখমলের মতো ফেনা সমান অনুপাতে।',
+      en: 'A freshly prepared cup of warm and aromatic coffee.',
+      bn: 'তাজা তৈরি গরম ও সুগন্ধি কফি।',
     },
-    price: 180,
+    price: 25,
     image: COFFEE_IMAGES[1],
   },
   {
-    id: 'caffe-latte',
+    id: 'cold-coffee',
     category: 'coffee',
-    name: { en: 'Caffe Latte', bn: 'ক্যাফে ল্যাটে' },
+    name: { en: 'Cold Coffee', bn: 'কোল্ড কফি' },
     description: {
-      en: 'Smooth espresso with plenty of steamed milk and a light foam top.',
-      bn: 'বেশি ভাপানো দুধের সঙ্গে নরম এসপ্রেসো ও হালকা ফেনা।',
+      en: 'A chilled and refreshing coffee drink.',
+      bn: 'ঠান্ডা ও সতেজ স্বাদের কফি।',
     },
-    price: 190,
-    image: COFFEE_IMAGES[0],
+    price: 60,
+    image: COFFEE_IMAGES[2] ,
   },
+
+  // ==============================
+  // MILK & DRINKS
+  // ==============================
   {
-    id: 'flat-white',
-    category: 'coffee',
-    name: { en: 'Flat White', bn: 'ফ্ল্যাট হোয়াইট' },
+    id: 'kesar-pista-badam-milk',
+    category: 'milk',
+    name: {
+      en: 'Kesar Pista Badam Milk',
+      bn: 'কেশর পিস্তা বাদাম দুধ',
+    },
     description: {
-      en: 'Ristretto with silky microfoam for a rich, velvety cup.',
-      bn: 'ঘন এসপ্রেসো ও মসৃণ মাইক্রোফোম দিয়ে তৈরি।',
+      en: 'A rich milk drink flavoured with saffron, pistachios and almonds.',
+      bn: 'জাফরান, পেস্তা ও বাদামের স্বাদে তৈরি সমৃদ্ধ দুধের পানীয়।',
     },
-    price: 200,
-    image: COFFEE_IMAGES[2],
+    price: 30,
+    image: COLD_IMAGES[0],
   },
-  {
-    id: 'sencha-green-tea',
-    category: 'special-tea',
-    name: { en: 'Sencha Green Tea', bn: 'সেনচা গ্রিন টি' },
-    description: {
-      en: 'Delicate and grassy, steeped at the perfect temperature.',
-      bn: 'হালকা সবুজ ঘাসের সুবাস যুক্ত, সঠিক তাপমাত্রায় তৈরি।',
-    },
-    price: 130,
-    image: TEA_IMAGES[1],
-  },
-  {
-    id: 'chamomile-blossom',
-    category: 'special-tea',
-    name: { en: 'Chamomile Blossom', bn: 'ক্যামোমাইল ব্লসম' },
-    description: {
-      en: 'Soft floral infusion, calm and caffeine-free.',
-      bn: 'নরম ফুলেল সুবাস, ক্যাফেইন-মুক্ত ও প্রশান্তিদায়ক।',
-    },
-    price: 150,
-    image: TEA_IMAGES[2],
-  },
-  {
-    id: 'jasmine-pearl',
-    category: 'special-tea',
-    name: { en: 'Jasmine Pearl', bn: 'জুঁই ফুলের চা' },
-    description: {
-      en: 'Hand-rolled green tea scented with fresh jasmine blossoms.',
-      bn: 'তাজা জুঁই ফুলের সুবাসে ভরা হাতে গড়া গ্রিন টি।',
-    },
-    price: 160,
-    image: TEA_IMAGES[0],
-  },
-  {
-    id: 'hibiscus-rose',
-    category: 'special-tea',
-    name: { en: 'Hibiscus Rose', bn: 'হিবিসকাস ও গোলাপ' },
-    description: {
-      en: 'Tangy hibiscus petals with rose and a hint of honey.',
-      bn: 'হিবিসকাস ও গোলাপের টক-মিষ্টি মিশ্রণ, সঙ্গে মধুর ছোঁয়া।',
-    },
-    price: 170,
-    image: TEA_IMAGES[1],
-  },
-  {
-    id: 'iced-latte',
+   {
+    id: 'orange-juice',
     category: 'cold-drinks',
-    name: { en: 'Iced Latte', bn: 'আইসড ল্যাটে' },
+    name: { en: 'Orange Juice', bn: 'কমলা শরবত' },
     description: {
-      en: 'Espresso over ice with cold milk, served tall.',
-      bn: 'বরফ, ঠান্ডা দুধ ও এসপ্রেসোর সতেজ মিশ্রণ।',
+      en: 'Refreshing orange-flavoured drink.',
+      bn: 'কমলার স্বাদে তৈরি সতেজ পানীয়।',
     },
-    price: 210,
+    price: 20,
     image: COLD_IMAGES[0],
   },
   {
-    id: 'cold-brew',
+    id: 'lychee-water',
     category: 'cold-drinks',
-    name: { en: 'Cold Brew', bn: 'কোল্ড ব্রু' },
+    name: { en: 'Lychee Water', bn: 'লিচু পানি' },
     description: {
-      en: 'Slow-steeped for 18 hours for a smooth, low-acid coffee.',
-      bn: '১৮ ঘণ্টা ধীরে ভিজিয়ে তৈরি মসৃণ কোল্ড কফি।',
+      en: 'Refreshing lychee drink.',
+      bn: 'লিচুর স্বাদের সতেজ পানীয়।',
     },
-    price: 220,
+    price: 20,
     image: COLD_IMAGES[1],
   },
   {
-    id: 'mint-lemonade',
+    id: 'pineapple-drink',
     category: 'cold-drinks',
-    name: { en: 'Mint Lemonade', bn: 'মিন্ট লেমনেড' },
+    name: { en: 'Pineapple Drink', bn: 'আনারসের পানীয়' },
     description: {
-      en: 'Fresh lemon, crushed mint and sparkling water over ice.',
-      bn: 'তাজা লেবু, পুদিনা ও বরফের সঙ্গে সোডা।',
+      en: 'Refreshing pineapple-flavoured drink.',
+      bn: 'আনারসের স্বাদের সতেজ পানীয়।',
     },
-    price: 130,
+    price: 40,
     image: COLD_IMAGES[2],
   },
   {
-    id: 'mango-smoothie',
-    category: 'cold-drinks',
-    name: { en: 'Mango Smoothie', bn: 'আম স্মুদি' },
+    id: 'chocolate-coffee',
+    category: 'coffee',
+    name: { en: 'Chocolate Coffee', bn: 'চকোলেট কফি' },
     description: {
-      en: 'Ripe mango blended with yogurt and a touch of honey.',
-      bn: 'পাকা আম, দই ও মধু মিশিয়ে তৈরি ঘন স্মুদি।',
+      en: 'Chocolate-flavoured coffee drink.',
+      bn: 'চকোলেটের স্বাদে তৈরি কফি।',
     },
-    price: 180,
+    price: 50,
+    image: COFFEE_IMAGES[0],
+  },
+   {
+    id: 'chocolate-milkshake',
+    category: 'shakes',
+    name: {
+      en: 'Chocolate Milkshake',
+      bn: 'চকোলেট মিল্কশেক',
+    },
+    description: {
+      en: 'A chilled chocolate-flavoured milkshake.',
+      bn: 'চকোলেটের স্বাদে তৈরি ঠান্ডা মিল্কশেক।',
+    },
+    price: 60,
+    image: COLD_IMAGES[0],
+  },
+  {
+    id: 'strawberry-milkshake',
+    category: 'shakes',
+    name: {
+      en: 'Strawberry Milkshake',
+      bn: 'স্ট্রবেরি মিল্কশেক',
+    },
+    description: {
+      en: 'A refreshing strawberry-flavoured milkshake.',
+      bn: 'স্ট্রবেরির স্বাদে তৈরি সতেজ মিল্কশেক।',
+    },
+    price: 60,
     image: COLD_IMAGES[2],
   },
-]
+  {
+    id: 'mango-milkshake',
+    category: 'shakes',
+    name: {
+      en: 'Mango Milkshake',
+      bn: 'ম্যাঙ্গো মিল্কশেক',
+    },
+    description: {
+      en: 'A chilled and creamy mango drink.',
+      bn: 'আমের স্বাদে তৈরি ঠান্ডা ও ক্রিমি পানীয়।',
+    },
+    price: 60,
+    image: COLD_IMAGES[1],
+  },
+];
+
