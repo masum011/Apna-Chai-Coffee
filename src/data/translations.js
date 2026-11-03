@@ -22,7 +22,7 @@ export const STRINGS = {
     increase: 'Increase quantity',
     orderOnWhatsApp: 'Order on WhatsApp',
     whatsappNote: 'WhatsApp will open with your order ready to send.',
-    whatsappHeader: 'New order from Ember & Leaf',
+    whatsappHeader: 'New order from Apna Chai & Coffee',
     footerRights: 'All rights reserved.',
   },
   bn: {
