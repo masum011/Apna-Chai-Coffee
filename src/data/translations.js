@@ -1,6 +1,6 @@
 export const STRINGS = {
   en: {
-    brand: 'Apna Chai & Coffee by Mamun',
+    brand: 'Apna Amritulya by Mamun',
     language: 'বাংলা',
     navMenu: 'Menu',
     cart: 'Cart',
@@ -22,17 +22,17 @@ export const STRINGS = {
     increase: 'Increase quantity',
     orderOnWhatsApp: 'Order on WhatsApp',
     whatsappNote: 'WhatsApp will open with your order ready to send.',
-    whatsappHeader: 'New order from Apna Chai & Coffee',
+    whatsappHeader: 'New order from Apna Amritulya',
     footerRights: 'All rights reserved.',
   },
   bn: {
-    brand: 'আপনা চা ও কফি',
+    brand: 'আপনা অমৃততুল্য — মামুন',
     language: 'English',
     navMenu: 'মেনু',
     cart: 'কার্ট',
     openCart: 'কার্ট খুলুন',
     closeCart: 'কার্ট বন্ধ করুন',
-    heroTitle: 'ধীরে তৈরি কফি ও মনের মতো চা',
+    heroTitle: '☕🍔 — ধীরে তৈরি কফি, মনের মতো চা আর মজাদার খাবার, প্রতিটি মুহূর্তকে করে তোলে বিশেষ।',
     heroSubtitle:
       'যত্ন করে বানানো পানীয়, সকালের গরম এসপ্রেসো থেকে বিকেলের ঠান্ডা আইসড ব্রু পর্যন্ত।',
     heroCta: 'মেনু দেখুন',
@@ -48,7 +48,7 @@ export const STRINGS = {
     increase: 'পরিমাণ বাড়ান',
     orderOnWhatsApp: 'হোয়াটসঅ্যাপে অর্ডার করুন',
     whatsappNote: 'আপনার অর্ডার প্রস্তুত অবস্থায় হোয়াটসঅ্যাপ খুলে যাবে।',
-    whatsappHeader: 'এম্বার অ্যান্ড লিফ থেকে নতুন অর্ডার',
+    whatsappHeader: 'আপনা অমৃততুল্য থেকে নতুন অর্ডার',
     footerRights: 'সর্বস্বত্ব সংরক্ষিত।',
   },
 }

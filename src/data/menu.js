@@ -25,13 +25,20 @@ const cigSpecial = findImage('special')
 const cigClassic = findImage('classic')
 const cigNavyCut = findImage('navycut')
 const cigMarlboro = findImage('marlboro')
+const cdRedbull = findImage('cd-1-redbull')
+const cdMonster = findImage('cd-2-monster')
+const cdHell = findImage('cd-3-hell')
+const cdCampa = findImage('cd-4-campa')
+const cdSpriteCan = findImage('cd-5-sprite-can')
+const cdCampaEnergy = findImage('cd-6-campa-energy')
+const cdCampaOrange = findImage('cd-7-campa-orange')
+const cdLassi = findImage('cd-8-lassi')
+const cdColdDrink = findImage('cd-9-cold-drink')
 
 export const CATEGORIES = [
   { id: 'all', name: { en: 'All Items', bn: 'সব আইটেম' } },
   { id: 'tea', name: { en: 'Tea', bn: 'চা' } },
-  { id: 'special-tea', name: { en: 'Special Tea', bn: 'বিশেষ চা' } },
   { id: 'coffee', name: { en: 'Coffee', bn: 'কফি' } },
-  { id: 'milk', name: { en: 'Milk & Drinks', bn: 'দুধ ও পানীয়' } },
   { id: 'cold-drinks', name: { en: 'Cold Drinks', bn: 'ঠান্ডা পানীয়' } },
   { id: 'shakes', name: { en: 'Milkshakes', bn: 'মিল্কশেক' } },
   { id: 'smoking', name: { en: 'Smoking', bn: 'ধূমপান' } },
@@ -190,7 +197,7 @@ export const MENU_ITEMS = [
   // ==============================
   {
     id: 'gur-tulsi-masala-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Gur Tulsi Masala Tea', bn: 'গুড় তুলসী মসলা চা' },
     description: {
       en: 'Special tea combining jaggery, tulsi and masala flavours.',
@@ -201,7 +208,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'masala-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Masala Tea', bn: 'মসলা চা' },
     description: {
       en: 'Traditional Indian tea with a rich aromatic masala flavour.',
@@ -212,7 +219,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'ginger-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Ginger Tea', bn: 'আদা চা' },
     description: {
       en: 'Freshly prepared tea with a warm ginger flavour.',
@@ -223,7 +230,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'ginger-jaggery-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Ginger Jaggery Tea', bn: 'আদা গুড় চা' },
     description: {
       en: 'A delicious combination of ginger and jaggery in tea.',
@@ -234,7 +241,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'rose-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Rose Tea', bn: 'গোলাপ চা' },
     description: {
       en: 'Aromatic tea with a delicate rose flavour.',
@@ -245,7 +252,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'masala-lemon-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Masala Lemon Tea', bn: 'মসলা লেমন টি' },
     description: {
       en: 'Refreshing lemon tea with a special masala touch.',
@@ -256,7 +263,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 'special-lemon-tea',
-    category: 'special-tea',
+    category: 'tea',
     name: { en: 'Special Lemon Tea', bn: 'স্পেশাল লেমন টি' },
     description: {
       en: 'A special refreshing lemon tea with a distinctive taste.',
@@ -319,7 +326,7 @@ export const MENU_ITEMS = [
   // ==============================
   {
     id: 'kesar-pista-badam-milk',
-    category: 'milk',
+    category: 'cold-drinks',
     name: { en: 'Kesar Pista Badam Milk', bn: 'কেশর পিস্তা বাদাম দুধ' },
     description: {
       en: 'A rich milk drink flavoured with saffron, pistachios and almonds.',
@@ -364,6 +371,106 @@ export const MENU_ITEMS = [
     },
     price: 40,
     image: COLD_IMAGES[2],
+  },
+
+  {
+    id: 'red-bull',
+    category: 'cold-drinks',
+    name: { en: 'Red Bull', bn: 'রেড বুল' },
+    description: {
+      en: 'Chilled energy drink.',
+      bn: 'ঠান্ডা এনার্জি ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdRedbull,
+  },
+  {
+    id: 'monster',
+    category: 'cold-drinks',
+    name: { en: 'Monster', bn: 'মনস্টার' },
+    description: {
+      en: 'Chilled energy drink.',
+      bn: 'ঠান্ডা এনার্জি ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdMonster,
+  },
+  {
+    id: 'hell',
+    category: 'cold-drinks',
+    name: { en: 'Hell', bn: 'হেল' },
+    description: {
+      en: 'Chilled energy drink.',
+      bn: 'ঠান্ডা এনার্জি ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdHell,
+  },
+  {
+    id: 'campa',
+    category: 'cold-drinks',
+    name: { en: 'Campa', bn: 'কাম্পা' },
+    description: {
+      en: 'Chilled cola drink.',
+      bn: 'ঠান্ডা কোলা ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdCampa,
+  },
+  {
+    id: 'sprite-can',
+    category: 'cold-drinks',
+    name: { en: 'Sprite Can', bn: 'স্প্রাইট ক্যান' },
+    description: {
+      en: 'Chilled lemon-lime soft drink in a can.',
+      bn: 'ক্যানে ঠান্ডা লেমন-লাইম ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdSpriteCan,
+  },
+  {
+    id: 'campa-energy',
+    category: 'cold-drinks',
+    name: { en: 'Campa Energy', bn: 'কাম্পা এনার্জি' },
+    description: {
+      en: 'Chilled energy drink.',
+      bn: 'ঠান্ডা এনার্জি ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdCampaEnergy,
+  },
+  {
+    id: 'campa-orange',
+    category: 'cold-drinks',
+    name: { en: 'Campa Orange', bn: 'কাম্পা অরেঞ্জ' },
+    description: {
+      en: 'Chilled orange-flavoured drink.',
+      bn: 'ঠান্ডা কমলার স্বাদের ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdCampaOrange,
+  },
+  {
+    id: 'smooth-lassi',
+    category: 'cold-drinks',
+    name: { en: 'Smooth Lassi', bn: 'স্মুথ লস্যি' },
+    description: {
+      en: 'Thick, creamy and chilled lassi.',
+      bn: 'ঘন, ক্রিমি ও ঠান্ডা লস্যি।',
+    },
+    price: 0, // TODO: set price
+    image: cdLassi,
+  },
+  {
+    id: 'cold-drink',
+    category: 'cold-drinks',
+    name: { en: 'Cold Drink', bn: 'কোল্ড ড্রিংক' },
+    description: {
+      en: 'Chilled soft drink.',
+      bn: 'ঠান্ডা কোল্ড ড্রিংক।',
+    },
+    price: 0, // TODO: set price
+    image: cdColdDrink,
   },
 
   // ==============================
