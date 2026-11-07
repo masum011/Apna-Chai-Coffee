@@ -2,7 +2,7 @@
 export default function FranchiseSection() {
   const franchiseStats = [
     {
-      value: '₹3–5 Lakhs',
+      value: '₹1–1.5 Lakhs',
       label: 'Investment',
       icon: '💰',
     },
@@ -12,7 +12,7 @@ export default function FranchiseSection() {
       icon: '📍',
     },
     {
-      value: '₹40K–80K',
+      value: '₹30K–50K',
       label: 'Monthly Profit',
       icon: '📈',
     },
