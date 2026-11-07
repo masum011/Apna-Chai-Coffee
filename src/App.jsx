@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import MenuSection from './components/MenuSection'
 import CartDrawer from './components/CartDrawer'
 import Footer from './components/Footer'
 import { useCart } from './hooks/useCart'
@@ -32,8 +31,7 @@ export default function App() {
         onOpenCart={openCart}
       />
       <main className="flex-1">
-        <Hero strings={strings} />
-        <MenuSection strings={strings} lang={lang} cart={cart} />
+        <Outlet context={{ strings, lang, cart }} />
       </main>
       <Footer strings={strings} />
       <CartDrawer
@@ -45,6 +43,7 @@ export default function App() {
         strings={strings}
         onQuantityChange={cart.setQuantity}
       />
+      <ScrollRestoration />
     </div>
   )
 }
